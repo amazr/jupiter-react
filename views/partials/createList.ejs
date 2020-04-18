@@ -1,0 +1,8 @@
+<div class="dropdown">
+    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Weather Lists</button>
+    <div class="dropdown-menu">
+      <% for (let i = 0; i < lists.length; i++) { %>
+        <a class="dropdown-item" href="#"><%= lists[i].name %></a>
+      <% } %>
+    </div>
+</div>

@@ -46,6 +46,8 @@ Date         | What's new
     - *nav* HTML for the nav bar
     - *registerForm* Page for when a user wants to register, this also links to *register.js*.
     - *temp* This is never loaded as of now, contains buttons for testing API calls
+- **routes**
+  - *routes.js* This file contains all of our routes. Each route calls a function that defines the routes behavior. These functions exist in other files (in the routes directory). Each file has the same name as the route, e.g the behavior for the '/login' get route can be found in the login.js file.  
 - **.env**
   - This is a secret file containing our API keys! Each key is stored in a variable name. These can be referenced in our backend, example: *process.env.MONGOURL*.
 - **.gitignore**
@@ -58,7 +60,5 @@ Date         | What's new
   - This file tells node what dependencies we have loaded. When you run 'npm install' it looks for this file and installs listed dependencies. We also define other app behavior there, like what file to run when we type 'npm start' and if we want to run any other scripts, such as nodemon, when we start up.
 - **README.md**
   - Hopefully you know what this is...
-- **routes.js**
-  - This file contains all of our routes, and is linked to by server.js. A lot happens here, but each route is documented in the file.
 - **server.js**
   - This file contains our sever setup. It sets our view engine (ejs), connects to our database, loads our static resources, sets up sessioning, links some dependencies. This file will rarely need to be changed or looked at.

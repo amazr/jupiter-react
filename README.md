@@ -59,6 +59,6 @@ Date         | What's new
 - **package.json**
   - This file tells node what dependencies we have loaded. When you run 'npm install' it looks for this file and installs listed dependencies. We also define other app behavior there, like what file to run when we type 'npm start' and if we want to run any other scripts, such as nodemon, when we start up.
 - **README.md**
-  - Hopefully you know what this is...
+  - This is the file you're currently reading!
 - **server.js**
   - This file contains our sever setup. It sets our view engine (ejs), connects to our database, loads our static resources, sets up sessioning, links some dependencies. This file will rarely need to be changed or looked at.

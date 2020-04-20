@@ -12,20 +12,37 @@
     </head>
     <body>
         <%- include('../partials/nav') %>
+       
         <div class="container">
+
+
+            <% if (messages.includes("invplace")) { %>
+                    <div class="toast" role="alert" style="position: absolute; top: 25; left: 10px; z-index: 999" data-autohide="false">
+                        <div class="toast-header">
+                        <img src="\img\jupiter.svg" alt="" width="25" height="25" class="rounded mr-2" alt="...">
+                        <strong class="mr-auto">Jupiter Uplink</strong>
+                        <small>Now</small>
+                        <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        </div>
+                        <div class="toast-body">
+                        Your location was unable to be found!
+                        </div>
+                    </div>
+              <% } %> 
+
             <% if (page === "register") { %>
                 <%- include('../partials/registerForm') %>
             <% } else { %>
-                
+
                     <div class="mt-4 row d-flex justify-content-around">
                         <h1 class="display-6 text-center d-md-block d-none mb-5 mt-5 col-12"><span class="primary-color">Jupiter</span> <img class="rounded-circle animated rotateIn" src="\img\jupiter.svg" alt="" width="100" height="100"> Weather</h1>
                         <h1 class="display-6 text-center d-xs-block d-md-none mb-5 mt-5 col-12"><span class="primary-color">J</span> <img class="rounded-circle animated rotateIn" src="\img\jupiter.svg" alt="" width="100" height="100"> W</h1>
 
+                    
                         <%- include('../partials/add-card') %>
                         <%- include('../partials/my-location') %>
-                        <% if (messages.includes("invplace")) { %>
-                            <p>No Results Found :(</p>
-                        <% } %>
                     </div>
           
             <% } %>

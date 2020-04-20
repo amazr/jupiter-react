@@ -15,3 +15,11 @@
     })
     </script>
 <% } %>
+
+<% if (messages.includes("invplace")) { %>
+    <script>
+        $(function () {
+            $('.toast').toast('show');
+        })
+    </script>
+<% } %>

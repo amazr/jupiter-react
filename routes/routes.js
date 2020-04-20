@@ -44,6 +44,12 @@ app.get('/list/:name', (req,res) =>
     getList.getListGet(req, res);
 });
 
+app.get('/clearList', (req,res) =>
+{
+    req.session.cards = [];
+    res.redirect('/')
+});
+
 
 /* APP POST ROUTES */
 

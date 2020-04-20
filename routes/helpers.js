@@ -6,15 +6,17 @@ function createNewResponse(cards) {
         username: "",
         page: "",
         messages: [],
-        cards: cards,
+        cards: isListValid(cards),
         lists: []
     };
 }
 
+//From kelvin to F
 function KtoF(tempK) {
     return Math.ceil(((tempK-273.15)*1.8)+32);
 }
 
+//From kelvin to C
 function KtoC(tempK) {
     return K-273.15;
 }
@@ -40,6 +42,20 @@ function getWeatherImage(condition) {
     else 
     {
         return "error.png";
+    }
+}
+
+//This function checks if the argument is an initialized array and either returns the array or an initialized empty array
+//This function is internal and used in createNewResponse
+function isListValid(list)
+{
+    if (!list)
+    {
+        return [];
+    }
+    else
+    {
+        return list;
     }
 }
 

@@ -12,9 +12,9 @@
         
             <div class="col-lg-4 col-md-5 col-sm-5 col-xs-12 p-0 align-self-center">
                 <form action="/saveList" method="POST">
-                    <div class="row">
-                        <input class="form-control col-md-8 col-sm-6 col-lg-8 d-none d-sm-block <% if (isLoggedIn === false) { %> disabled <% } %>" type="text" <% if (isLoggedIn === false) { %> disabled <% } %> placeholder="List Name" name="listName">
-                        <button class="btn ml-1 d-none d-sm-block <% if (isLoggedIn === false) { %> disabled <% } else {%> btn-jupiter<% } %>" <% if (isLoggedIn === false) { %> disabled <% } %> type="submit"><i class="fas fa-save"></i> Save</button>
+                    <div class="row" <% if (isLoggedIn === false) { %> data-toggle="tooltip" title="This feature requires login!" <% } %>> 
+                        <input class="form-control col-md-8 col-sm-6 col-lg-8 d-none d-sm-block <% if (isLoggedIn === false) { %> disabled <% } %>" type="text" <% if (isLoggedIn === false) { %> style="pointer-events: none;" disabled <% } %> placeholder="List Name" name="listName">
+                        <button class="btn ml-1 d-none d-sm-block <% if (isLoggedIn === false) { %> disabled <% } else {%> btn-jupiter<% } %>" <% if (isLoggedIn === false) { %> style="pointer-events: none;" disabled <% } %> type="submit"><i class="fas fa-save"></i> Save</button>
                     </div>
                 </form>
             </div>

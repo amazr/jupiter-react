@@ -108,7 +108,6 @@ app.post('/saveList', (req,res) =>
 app.post('/setLocation', (req, res) =>
 {
     //what this needs to do is go through all the lists and reset their location as well as set a location in req.session
-    console.log(req.body.myPlace);
     setLocation.setLocationPost(req, res);
 });
 

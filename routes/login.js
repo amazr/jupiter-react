@@ -7,7 +7,7 @@ const bcrypt = require("bcrypt");
 //This function has form validation and error handling work needed
 function loginPost(req, res) 
 {
-    let response = helpers.createNewResponse(req.session.cards);
+    let response = helpers.createNewResponse(req.session);
 
     //Mongoose query for a single user based off the username passed to us by the login-modal form
     userModel.findOne({

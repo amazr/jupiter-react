@@ -1,13 +1,14 @@
 //This function creates a new response for EJS
 //This should always be called to generate a response template if you are passing data to the frontend
-function createNewResponse(cards) {
+function createNewResponse(session) {
     return {
         isLoggedIn: false,
         username: "",
         page: "",
         messages: [],
-        cards: isListValid(cards),
-        lists: []
+        cards: isListValid(session.cards),
+        lists: [],
+        location: isValidLocation(session.origin)
     };
 }
 
@@ -60,6 +61,18 @@ function isListValid(list)
     else
     {
         return list;
+    }
+}
+
+function isValidLocation(location)
+{
+    if (!location)
+    {
+        return "Boulder";
+    }
+    else
+    {
+        return location;
     }
 }
 

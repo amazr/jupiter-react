@@ -9,6 +9,7 @@ const login = require('./login');
 const logout = require('./logout');
 const getPlace = require('./getPlace');
 const saveList = require('./saveList');
+const getList = require('./getList');
 
 const app = express();
 
@@ -38,9 +39,9 @@ app.get('/register', (req,res) =>
 /**
  * A get route that is intended to fetch a users specific list
  */
-app.get('/list/:name', (req,res) => {
-    console.log("Attempting to get " + req.params.name);
-    res.redirect('/');
+app.get('/list/:name', (req,res) => 
+{
+    getList.getListGet(req, res);
 });
 
 

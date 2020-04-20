@@ -2,6 +2,22 @@
 <div class="card mt-4 justify-content-center inner-light-color col-12">
     <div class="form-group text-center mt-2">
         <div class="title"><i class="fas fa-globe-americas"></i> Targeted Locations</div>
+
+        <div class="d-flex justify-content-between">
+            <div class="col-2 p-0 align-self-center">
+                <%- include('../partials/createList') %>
+            </div>
+
+            <div class="col-3 p-0 align-self-center">
+                <form action="/saveList" method="POST">
+                    <div class="row">
+                        <input class="form-control col-8 <% if (isLoggedIn === false) { %> disabled <% } %>" type="text" <% if (isLoggedIn === false) { %> disabled <% } %> placeholder="List Name" name="listName">
+                        <button class="btn ml-1 <% if (isLoggedIn === false) { %> disabled <% } else {%> btn-jupiter<% } %>" <% if (isLoggedIn === false) { %> disabled <% } %> type="submit">Save</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
     </div>
     <div class="card-deck" id="weather_deck">
         

@@ -1,4 +1,6 @@
-body {background-color: #E8E8E8;}
+body {
+    background-color: #E8E8E8;
+}
 .weather-image {
     width: 60%;
     height: auto;
@@ -12,11 +14,26 @@ body {background-color: #E8E8E8;}
 .secondary-color {
     color: #564256;
 }
+.dark-background {
+    background-color: #564256;
+    border: none;
+}
+
 .title {
     color: #ffffff;
 }
 .inner-color {
     background-color: #96939B;
+    border: none;
+}
+
+.inner-lightest-color {
+    background-color: #E8E8E8;
+    border: none;
+}
+
+.disabled {
+    background-color: #A9A9A9;
     border: none;
 }
 
@@ -33,3 +50,18 @@ body {background-color: #E8E8E8;}
     background-color: #FC814A;
     margin-bottom: 5px;
 }
+
+.card-jupiter {
+    border: none;
+}
+
+.card-jupiter-inner {
+    background-color: #FC814A;
+    border: none;
+}
+
+.blank-spacer {
+    line-height: 170px;
+    min-height: 170px;
+    height: 170px;
+ }

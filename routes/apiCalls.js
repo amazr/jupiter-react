@@ -89,6 +89,18 @@ function callGoogleDirections(origin, destination)
                 let destinationName = googleJSON.destination_addresses[0];
                 let originName = googleJSON.origin_addresses[0];
 
+                //If these values are undefined
+                if (!destinationName)
+                {
+                    destinationName = "";
+                }
+                if (!originName)
+                {
+                    originName = "";
+                }
+
+                //Try to find a time to a location from another location. If there was no valid time (you cannot drive from north america to europe, for example)
+                //then set timeTo to a 'no time found' string
                 let timeTo = "";
                 try 
                 {

@@ -4,7 +4,7 @@ const helpers = require('./helpers');
 //This function returns a promise. A promise just guarentees that there will be a value there. If this function executes "correctly"
 // then we return the data in 'resolve', if there was an error then we return the error in 'reject'. Technically, this function isn't
 // sync, but we can treat it as a blocking function in an async function but calling it with the 'await' keyword. Which we do above.
-function getAllCardData(location)
+function getAllCardData(location, req)
 {
     return new Promise((resolve, reject) => 
     {
@@ -16,7 +16,17 @@ function getAllCardData(location)
             { 
                 //The variables below are set to the required data we got from calling openweather
                 let weatherJSON = JSON.parse(body);
-                let origin = "Boulder";     //This is a placeholder, eventually get from req.session! (or maybe a slider)
+
+                let origin = "";
+                if (!req.session.origin)
+                {
+                    origin = "Boulder";
+                }
+                else 
+                {
+                    origin = req.session.origin;
+                }
+
                 let destination = weatherJSON.name;
                 let imageSource = helpers.getWeatherImage(weatherJSON.weather[0].main);
                 
@@ -89,26 +99,20 @@ function callGoogleDirections(origin, destination)
                 let destinationName = googleJSON.destination_addresses[0];
                 let originName = googleJSON.origin_addresses[0];
 
-                //If these values are undefined
-                if (!destinationName)
+                if (!destinationName || !originName)
                 {
                     destinationName = "";
-                }
-                if (!originName)
-                {
                     originName = "";
                 }
 
-                //Try to find a time to a location from another location. If there was no valid time (you cannot drive from north america to europe, for example)
-                //then set timeTo to a 'no time found' string
                 let timeTo = "";
                 try 
                 {
-                    timeTo = googleJSON.rows[0].elements[0].duration.text;
+                    timeTo = `From ${googleJSON.origin_addresses[0]}: ${googleJSON.rows[0].elements[0].duration.text}`;
                 }
                 catch (error)
                 {
-                    timeTo = "No time found"
+                    timeTo = "No time found";
                 }
                                         
                 //This can be thought of as returning the following object
@@ -127,9 +131,9 @@ function callGoogleDirections(origin, destination)
 }
 
 module.exports = {
-    getAllCardData: function(location)
+    getAllCardData: function(location, req)
     {
-        return getAllCardData(location);
+        return getAllCardData(location, req);
     },
     callOpenWeather: function()
     {

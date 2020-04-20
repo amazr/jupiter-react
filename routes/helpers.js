@@ -39,6 +39,10 @@ function getWeatherImage(condition) {
     {
         return "img/rainy.png";
     }
+    else if (condition === "Thunderstorm")
+    {
+        return "img/thunderstorm.png";
+    }
     else 
     {
         return "error.png";

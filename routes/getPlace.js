@@ -9,7 +9,7 @@ async function getPlaceGet(req, res)
     let response = helpers.createNewResponse(req.session.cards);
     try
     {
-        let newCard = await apiCaller.getAllCardData(req.body.newPlace);
+        let newCard = await apiCaller.getAllCardData(req.body.newPlace, req);
         req.session.cards.push(newCard);
     }
     catch (error)

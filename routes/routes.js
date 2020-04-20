@@ -10,6 +10,7 @@ const logout = require('./logout');
 const getPlace = require('./getPlace');
 const saveList = require('./saveList');
 const getList = require('./getList');
+const setLocation = require('./setLocation');
 
 const app = express();
 
@@ -102,6 +103,13 @@ app.post('/getPlace', (req,res) =>
 app.post('/saveList', (req,res) => 
 {
     saveList.saveListGet(req, res);
+});
+
+app.post('/setLocation', (req, res) =>
+{
+    //what this needs to do is go through all the lists and reset their location as well as set a location in req.session
+    console.log(req.body.myPlace);
+    setLocation.setLocationPost(req, res);
 });
 
 module.exports = app

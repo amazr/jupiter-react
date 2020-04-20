@@ -51,7 +51,7 @@ function getList(req, res)
                     // to add to our users card list before we end up actually sending that data over.
                     try
                     {
-                        let newCard = await apiCaller.getAllCardData(listToLoad.locations[i]);
+                        let newCard = await apiCaller.getAllCardData(listToLoad.locations[i], req);
                         req.session.cards.push(newCard);
                     }
                     catch (error)

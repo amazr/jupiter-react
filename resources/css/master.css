@@ -1,4 +1,35 @@
+body {background-color: #E8E8E8;}
 .weather-image {
     width: 60%;
     height: auto;
+}
+.background {
+    background-color: #E8E8E8;
+}
+.primary-color {
+    color: #FC814A;
+}
+.secondary-color {
+    color: #564256;
+}
+.title {
+    color: #ffffff;
+}
+.inner-color {
+    background-color: #96939B;
+    border: none;
+}
+
+.inner-light-color {
+    background-color: #BFBFBF;
+    border: none;
+}
+
+.nav-bar-background {
+    background-color: #FC814A;
+}
+
+.btn-jupiter {
+    background-color: #FC814A;
+    margin-bottom: 5px;
 }

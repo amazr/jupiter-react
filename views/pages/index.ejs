@@ -7,6 +7,7 @@
         <script src="/js/login.js"></script>
         <script src="/js/register.js"></script>
         <script src="/js/addCard.js"></script>
+
         <link rel="stylesheet" href="css/master.css">
     </head>
     <body>
@@ -28,12 +29,12 @@
                                 </div>
                             </form>
                         </div>
-                        <div class="col-8 p-0 align-self-center">
+                        
                             <%- include('../partials/add-card') %>
                             <% if (messages.includes("invplace")) { %>
                                 <p>No Results Found :(</p>
                             <% } %>
-                        </div>
+                        <
                     </div>
                 <% } else { %>
                     <div class="container mt-4">
@@ -44,7 +45,9 @@
                     </div>
                 <% } %>
             <% } %>
+        
+            <%- include('../partials/cardDeck') %>
+
         </div>
-        <%- include('../partials/cardDeck') %>
     </body>
 </html>

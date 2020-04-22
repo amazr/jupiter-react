@@ -59,10 +59,12 @@
 </script>
 
 
-<% if (messages.includes("invplace")) { %>
+<% if (isLoggedIn === false) { %>
     <script>
-        $(function () {
-            $('.toast').toast('show');
-        })
+ 
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+    })
     </script>
 <% } %>
+

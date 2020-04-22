@@ -8,7 +8,8 @@ function createNewResponse(session) {
         messages: (session.messages) ? session.messages: [],
         cards: isListValid(session.cards),
         lists: (session.user) ? session.user.lists: [],
-        location: isValidLocation(session.origin)
+        location: isValidLocation(session.origin),
+        embedKey: process.env.GOOGLEEMBED
     };
 }
 

@@ -40,6 +40,7 @@
 
         //Make the post request
         var returnData =$.post("/getPlace",payload).done(function(data){
+                //Load new cards in callback function
                 loadCards();
             });
 
@@ -54,7 +55,7 @@
         $("#newPlace1").val("");
         $("#newPlace2").val("");
     }
-    
+
 </script>
 
 

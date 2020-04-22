@@ -28,39 +28,33 @@
     }
 
     function addPlace () {
+
+        //Check which version of the textbox is populated
         if ($("#newPlace1").val() != "") {
-            var payload = {
-                newPlace: $("#newPlace1").val()
-            };
-            console.log (payload);
-            
-            var returnData =$.post("/getPlace",payload).done(function(data){
+            var payload = {newPlace: $("#newPlace1").val()};
+        } else if ($("#newPlace2").val() != "") {
+            var payload = {newPlace: $("#newPlace2").val()};
+        } else {
+            //Do nothing. Blank value
+        }
+
+        //Make the post request
+        var returnData =$.post("/getPlace",payload).done(function(data){
                 loadCards();
             });
-            returnData.done(function( data ) {
-                console.log($( data ).find( ".invalid-place" ).length )
-                if ($( data ).find( ".invalid-place" ).length >0) {
-                    $('.toast').toast('show');
-                }
-            });
-            
-        } else if ($("#newPlace2").val() != "") {
 
-            var payload = {
-                newPlace: $("#newPlace2").val()
-            };
+        //Check returned data for 'invalid-place' div flag
+        returnData.done(function( data ) {
+            if ($( data ).find( ".invalid-place" ).length >0) {
+                $('.toast').toast('show');
+            }
+        });
 
-            returnData.done(function( data ) {
-                if ($( data ).find( ".invalid-place" ).length >0) {
-                    $('.toast').toast('show');
-                }
-            });
-            
-
-        }
+        //Clear textbox
         $("#newPlace1").val("");
         $("#newPlace2").val("");
     }
+    
 </script>
 
 

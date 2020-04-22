@@ -24,16 +24,25 @@
     }
 
     function loadCards () {
-        setTimeout($(".card-deck").load('/cards'), 1000);
+        $(".card-deck").load('/cards');
     }
 
-    function addPlace (location) {
+    function addPlace () {
         if ($("#newPlace1").val() != "") {
             var payload = {
                 newPlace: $("#newPlace1").val()
             };
-
-            $.post("/getPlace",payload).done(function(){loadCards();});
+            console.log (payload);
+            
+            var returnData =$.post("/getPlace",payload).done(function(data){
+                loadCards();
+            });
+            returnData.done(function( data ) {
+                console.log($( data ).find( ".invalid-place" ).length )
+                if ($( data ).find( ".invalid-place" ).length >0) {
+                    $('.toast').toast('show');
+                }
+            });
             
         } else if ($("#newPlace2").val() != "") {
 
@@ -41,12 +50,14 @@
                 newPlace: $("#newPlace2").val()
             };
 
-            console.log (payload);
-            $.post("/getPlace",payload).done(function(){loadCards()});
+            returnData.done(function( data ) {
+                if ($( data ).find( ".invalid-place" ).length >0) {
+                    $('.toast').toast('show');
+                }
+            });
             
-        }
 
-        
+        }
     }
 </script>
 

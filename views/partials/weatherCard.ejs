@@ -19,6 +19,15 @@
             <div class="card-body inner-lightest-color" align="center">
                 <img src="<%=cards[i].imageSource%>" alt="<%= cards[i].conditions %>.png" class="weather-image">
                 <p>Temperature: <%= cards[i].currentTemp %> F</p>
+                <div class="progress">
+                    <% var tempPercentage = ((cards[i].currentTemp - cards[i].minTemp) / (cards[i].maxTemp - cards[i].minTemp)) * 100 %>
+                    <% if (isNaN(tempPercentage)) { tempPercentage = 100 }%>
+                    <% if (cards[i].currentTemp <= 32) { var thermColor = "bg-info" } %>
+                    <% if (cards[i].currentTemp > 32 && cards[i].currentTemp <= 79) { var thermColor = "bg-success" } %>
+                    <% if (cards[i].currentTemp > 80 && cards[i].currentTemp <= 99) { var thermColor = "bg-warning" } %>
+                    <% if (cards[i].currentTemp > 99) { var thermColor = "bg-danger" } %>
+                    <div class="progress-bar <%= thermColor %>" role="progressbar" style="width: <%= tempPercentage %>%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
                 <p>Conditions: <%= cards[i].conditions %></p>
                 <p style="font-size: 8px;"><%= cards[i].timeTo %></p>
             </div>

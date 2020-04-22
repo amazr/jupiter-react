@@ -22,27 +22,31 @@
 
         $('#map-modal').modal('show');
     }
-</script>
 
-<script>
-    function getTempColor(temp)
-    {
-        if (temp <= 32)
-        {
-            return "bg-info";
+    function loadCards () {
+        setTimeout($(".card-deck").load('/cards'), 1000);
+    }
+
+    function addPlace (location) {
+        if ($("#newPlace1").val() != "") {
+            var payload = {
+                newPlace: $("#newPlace1").val()
+            };
+
+            $.post("/getPlace",payload).done(function(){loadCards();});
+            
+        } else if ($("#newPlace2").val() != "") {
+
+            var payload = {
+                newPlace: $("#newPlace2").val()
+            };
+
+            console.log (payload);
+            $.post("/getPlace",payload).done(function(){loadCards()});
+            
         }
-        else if (temp > 32 && temp < 80)
-        {
-            return "bg-success";
-        }
-        else if (temp >= 80 && temp < 100)
-        {
-            return "bg-warning";
-        }
-        else if (temp >= 100)
-        {
-            return "bg-danger";
-        }
+
+        
     }
 </script>
 

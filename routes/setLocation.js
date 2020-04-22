@@ -20,6 +20,7 @@ async function setLocationPost(req, res)
             {
                 let callResponse = await apiCaller.callGoogleDirections(origin, req.session.cards[i].title);
                 req.session.cards[i].timeTo = callResponse.time;
+                req.session.cards[i].origin = callResponse.origin;
             }
             catch(error)
             {

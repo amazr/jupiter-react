@@ -44,19 +44,21 @@ function getAllCardData(location, req)
                         //The variables below are set to the required data we got from calling Google Directions
                         let googleJSON = JSON.parse(body);
                         let name = googleJSON.destination_addresses[0];
-
+                        origin = googleJSON.origin_addresses[0];
                         let timeTo = "";
                         try 
                         {
-                            timeTo = `From ${googleJSON.origin_addresses[0]}: ${googleJSON.rows[0].elements[0].duration.text}`;
+                            timeTo = `From ${origin}: ${googleJSON.rows[0].elements[0].duration.text}`;
                         }
                         catch (error)
                         {
+                            origin = null;
                             timeTo = "No time found";
                         }
 
                         if (noOrigin)
                         {
+                            origin = null;
                             timeTo = "No time found";
                         }
                                     
@@ -66,7 +68,8 @@ function getAllCardData(location, req)
                             currentTemp: helpers.KtoF(weatherJSON.main.temp),
                             conditions: weatherJSON.weather[0].main,
                             imageSource: imageSource,
-                            timeTo: timeTo
+                            timeTo: timeTo,
+                            origin: origin 
                         });          
                     }
                     else
@@ -105,8 +108,8 @@ function callGoogleDirections(origin, destination, session)
 
                 if (!destinationName || !originName)
                 {
-                    destinationName = "";
-                    originName = "";
+                    destinationName = null;
+                    originName = null;
                 }
 
                 let timeTo = "";
@@ -121,7 +124,7 @@ function callGoogleDirections(origin, destination, session)
                                         
                 //This can be thought of as returning the following object
                 resolve({
-                    originName: originName,
+                    origin: originName,
                     destinationName: destinationName,
                     time: timeTo
                 });          
